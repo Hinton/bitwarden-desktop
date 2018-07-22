@@ -47,6 +47,7 @@ import { FolderAddEditComponent } from './vault/folder-add-edit.component';
 import { GroupingsComponent } from './vault/groupings.component';
 import { PasswordGeneratorHistoryComponent } from './vault/password-generator-history.component';
 import { PasswordGeneratorComponent } from './vault/password-generator.component';
+import { VaultContent } from './vault/vault-content.component';
 import { VaultComponent } from './vault/vault.component';
 import { ViewComponent } from './vault/view.component';
 
@@ -96,6 +97,7 @@ import { ViewComponent } from './vault/view.component';
         TwoFactorOptionsComponent,
         VaultComponent,
         ViewComponent,
+        VaultContent,
     ],
     entryComponents: [
         AttachmentsComponent,

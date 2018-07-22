@@ -4,7 +4,12 @@
     height: 100%;
     display: flex;
 
-    > #groupings, > #items, > #details, > #logo {
+    > ng-component {
+        display: flex;
+        width: 100%;
+    }
+
+    #groupings, #items, #details, #logo {
         display: flex;
         flex-direction: column;
 
@@ -13,7 +18,7 @@
         }
     }
 
-    > #groupings {
+    #groupings {
         width: 22%;
         min-width: 175px;
         max-width: 250px;
@@ -133,7 +138,7 @@
         }
     }
 
-    > #items {
+    #items {
         width: 28%;
         min-width: 200px;
         max-width: 350px;
@@ -163,7 +168,7 @@
         }
     }
 
-    > #details {
+    #details {
         flex: 1;
         min-width: 0;
         
@@ -195,7 +200,7 @@
         }
     }
 
-    > #logo {
+    #logo {
         flex: 1;
         min-width: 0;
 

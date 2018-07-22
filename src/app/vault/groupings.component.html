@@ -1,37 +1,22 @@
 <div class="content">
     <div class="inner-content">
         <ul>
-            <li [ngClass]="{active: selectedAll}">
-                <a href="#" appStopClick appBlurClick (click)="selectAll()">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['/vault/content']" [queryParams]="">
                     <i class="fa fa-fw fa-th"></i>&nbsp;{{'allItems' | i18n}}
                 </a>
             </li>
-            <li [ngClass]="{active: selectedFavorites}">
-                <a href="#" appStopClick appBlurClick (click)="selectFavorites()">
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'favorites'}">
                     <i class="fa fa-fw fa-star"></i>&nbsp;{{'favorites' | i18n}}
                 </a>
             </li>
         </ul>
         <h2>{{'types' | i18n}}</h2>
         <ul>
-            <li [ngClass]="{active: selectedType === cipherType.Login}">
-                <a href="#" appStopClick appBlurClick (click)="selectType(cipherType.Login)">
-                    <i class="fa fa-fw fa-globe"></i>&nbsp;{{'typeLogin' | i18n}}
-                </a>
-            </li>
-            <li [ngClass]="{active: selectedType === cipherType.Card}">
-                <a href="#" appStopClick appBlurClick (click)="selectType(cipherType.Card)">
-                    <i class="fa fa-fw fa-credit-card"></i>&nbsp;{{'typeCard' | i18n}}
-                </a>
-            </li>
-            <li [ngClass]="{active: selectedType === cipherType.Identity}">
-                <a href="#" appStopClick appBlurClick (click)="selectType(cipherType.Identity)">
-                    <i class="fa fa-fw fa-id-card-o"></i>&nbsp;{{'typeIdentity' | i18n}}
-                </a>
-            </li>
-            <li [ngClass]="{active: selectedType === cipherType.SecureNote}">
-                <a href="#" appStopClick appBlurClick (click)="selectType(cipherType.SecureNote)">
-                    <i class="fa fa-fw fa-sticky-note-o"></i>&nbsp;{{'typeSecureNote' | i18n}}
+            <li *ngFor="let type of types" [routerLinkActive]="['active']">
+                <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'type', type: type.key}">
+                    <i class="fa fa-fw" [ngClass]="type.icon"></i>&nbsp;{{type.name | i18n}}
                 </a>
             </li>
         </ul>
@@ -44,8 +29,8 @@
                 </button>
             </h2>
             <ul class="fa-ul">
-                <li *ngFor="let f of folders" [ngClass]="{active: selectedFolder && f.id === selectedFolderId}">
-                    <a href="#" appStopClick appBlurClick (click)="selectFolder(f)">
+                <li *ngFor="let f of folders" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                    <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'folder', folderId: f.id}">
                         <i class="fa-li fa fa-caret-right"></i> {{f.name}}
                         <span appStopProp appStopClick (click)="editFolder(f)" title="{{'editFolder' | i18n}}"
                               *ngIf="f.id">
@@ -57,8 +42,8 @@
             <div *ngIf="collections && collections.length">
                 <h2>{{'collections' | i18n}}</h2>
                 <ul class="fa-ul">
-                    <li *ngFor="let c of collections" [ngClass]="{active: c.id === selectedCollectionId}">
-                        <a href="#" appStopClick appBlurClick (click)="selectCollection(c)">
+                    <li *ngFor="let c of collections" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'collection', collectionId: c.id}">
                             <i class="fa-li fa fa-caret-right"></i> {{c.name}}
                         </a>
                     </li>
@@ -67,3 +52,5 @@
         </ng-container>
     </div>
 </div>
+
+<ng-template #folderAddEdit></ng-template>

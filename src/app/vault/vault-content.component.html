@@ -1,0 +1,33 @@
+<app-vault-ciphers id="items"
+                [activeCipherId]="cipherId"
+                (onCipherClicked)="viewCipher($event)"
+                (onCipherRightClicked)="viewCipherMenu($event)"
+                (onAddCipher)="addCipher($event)"
+                (onAddCipherOptions)="addCipherOptions()">
+</app-vault-ciphers>
+<app-vault-view id="details"
+                *ngIf="cipherId && action === 'view'"
+                [cipherId]="cipherId"
+                (onEditCipher)="editCipher($event)">
+</app-vault-view>
+<app-vault-add-edit id="details"
+                    *ngIf="action === 'add' || action === 'edit'"
+                    [folderId]="action === 'add' && folderId !== 'none' ? folderId : null"
+                    [type]="action === 'add' ? (addType ? addType : type) : null"
+                    [cipherId]="action === 'edit' ? cipherId : null"
+                    (onSavedCipher)="savedCipher($event)"
+                    (onDeletedCipher)="deletedCipher($event)"
+                    (onEditAttachments)="editCipherAttachments($event)"
+                    (onCancelled)="cancelledAddEdit($event)"
+                    (onGeneratePassword)="openPasswordGenerator(true)">
+</app-vault-add-edit>
+<div id="logo" *ngIf="action !== 'add' && action !== 'edit' && action !== 'view'">
+    <div class="content">
+        <div class="inner-content">
+            <img class="logo-image" />
+        </div>
+    </div>
+</div>
+<ng-template #passwordGenerator></ng-template>
+<ng-template #attachments></ng-template>
+<ng-template #folderAddEdit></ng-template>
