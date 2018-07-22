@@ -170,23 +170,18 @@ export class VaultContent implements OnInit, OnDestroy {
             } else if (params.action === 'add') {
                 this.addCipher();
             }
-            switch (params.filter) {
-                default:
-                    await this.clearGroupingFilters();
-                    break;
-                case 'favorites':
-                    await this.filterFavorites();
-                    break;
-                case 'type':
-                    const t = parseInt(params.type, null);
-                    await this.filterCipherType(t);
-                    break;
-                case 'folder':
-                    await this.filterFolder(params.folderId);
-                    break;
-                case 'collection':
-                    await this.filterCollection(params.collectionId);
-                    break;
+
+            if (params.favorites) {
+                await this.filterFavorites();
+            } else if (params.type) {
+                const t = parseInt(params.type, null);
+                await this.filterCipherType(t);
+            } else if (params.folderId) {
+                await this.filterFolder(params.folderId);
+            } else if (params.collectionId) {
+                await this.filterCollection(params.collectionId);
+            } else {
+                await this.ciphersComponent.load();
             }
         });
     }

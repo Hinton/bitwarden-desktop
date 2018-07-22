@@ -7,7 +7,7 @@
                 </a>
             </li>
             <li [routerLinkActive]="['active']">
-                <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'favorites'}">
+                <a [routerLink]="['/vault/content']" [queryParams]="{favorites: true}">
                     <i class="fa fa-fw fa-star"></i>&nbsp;{{'favorites' | i18n}}
                 </a>
             </li>
@@ -15,7 +15,7 @@
         <h2>{{'types' | i18n}}</h2>
         <ul>
             <li *ngFor="let type of types" [routerLinkActive]="['active']">
-                <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'type', type: type.key}">
+                <a [routerLink]="['/vault/content']" [queryParams]="{type: type.key}">
                     <i class="fa fa-fw" [ngClass]="type.icon"></i>&nbsp;{{type.name | i18n}}
                 </a>
             </li>
@@ -30,7 +30,7 @@
             </h2>
             <ul class="fa-ul">
                 <li *ngFor="let f of folders" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-                    <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'folder', folderId: f.id}">
+                    <a [routerLink]="['/vault/content']" [queryParams]="{folderId: f.id ? f.id : 'none'}">
                         <i class="fa-li fa fa-caret-right"></i> {{f.name}}
                         <span appStopProp appStopClick (click)="editFolder(f)" title="{{'editFolder' | i18n}}"
                               *ngIf="f.id">
@@ -43,7 +43,7 @@
                 <h2>{{'collections' | i18n}}</h2>
                 <ul class="fa-ul">
                     <li *ngFor="let c of collections" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-                        <a [routerLink]="['/vault/content']" [queryParams]="{filter: 'collection', collectionId: c.id}">
+                        <a [routerLink]="['/vault/content']" [queryParams]="{collectionId: c.id}">
                             <i class="fa-li fa fa-caret-right"></i> {{c.name}}
                         </a>
                     </li>

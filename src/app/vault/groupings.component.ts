@@ -16,7 +16,7 @@ import { FolderView } from 'jslib/models/view/folderView';
 export class GroupingsComponent extends BaseGroupingsComponent implements OnInit {
     @ViewChild('folderAddEdit', { read: ViewContainerRef }) folderAddEditModalRef: ViewContainerRef;
 
-    private types = [
+    types = [
         {
             name: 'typeLogin',
             key: CipherType.Login,
@@ -75,4 +75,24 @@ export class GroupingsComponent extends BaseGroupingsComponent implements OnInit
         });
     }
 
+    async addFolder() {
+        if (this.modal != null) {
+            this.modal.close();
+        }
+
+        const factory = this.componentFactoryResolver.resolveComponentFactory(ModalComponent);
+        this.modal = this.folderAddEditModalRef.createComponent(factory).instance;
+        const childComponent = this.modal.show<FolderAddEditComponent>(
+            FolderAddEditComponent, this.folderAddEditModalRef);
+
+        childComponent.folderId = null;
+        childComponent.onSavedFolder.subscribe(async (folder: FolderView) => {
+            this.modal.close();
+            await this.loadFolders();
+        });
+
+        this.modal.onClosed.subscribe(() => {
+            this.modal = null;
+        });
+    }
 }
