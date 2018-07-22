@@ -1,0 +1,26 @@
+<div id="audit">
+    <div class="boxes">
+        <div class="box leaked">
+            <h2>Leaked Passwords</h2>
+            <span>{{countLeaked()}}</span>
+            <p>Found in data breaches.</p>
+            <a [routerLink]="['/vault/content']" [queryParams]="">See items</a>
+        </div>
+        
+        <div class="box weak">
+            <h2>Weak Passwords</h2>
+            <span>{{countWeak()}}</span>
+            <p>These passwords area easy to guess.</p>
+        </div>
+        
+        <div class="box reuse">
+            <h2>Reused Passwords</h2>
+            <span>{{countReused()}}</span>
+            <p>Reusing passwords is bad.</p>
+        </div>
+    </div>
+
+    <div class="breached-accounts">
+        Breached account list?
+    </div>
+</div>

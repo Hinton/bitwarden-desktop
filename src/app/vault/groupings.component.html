@@ -50,6 +50,14 @@
                 </ul>
             </div>
         </ng-container>
+
+        <ul>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['/vault/audit']">
+                    <i class="fa fa-fw fa-list-ul"></i>&nbsp;{{'audit' | i18n}}
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 

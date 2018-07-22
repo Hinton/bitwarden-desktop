@@ -12,6 +12,7 @@ import { LoginComponent } from './accounts/login.component';
 import { RegisterComponent } from './accounts/register.component';
 import { TwoFactorComponent } from './accounts/two-factor.component';
 
+import { AuditComponent } from './security/audit.component';
 import { VaultContent } from './vault/vault-content.component';
 import { VaultComponent } from './vault/vault.component';
 
@@ -28,12 +29,16 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'content',
                 pathMatch: 'full',
+                redirectTo: 'content',
             },
             {
                 path: 'content',
                 component: VaultContent,
+            },
+            {
+                path: 'audit',
+                component: AuditComponent,
             },
         ],
     },

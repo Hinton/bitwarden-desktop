@@ -1,0 +1,30 @@
+app-audit {
+    width: 100%;
+}
+
+#audit {
+    width: 100%;
+    padding: 10px;
+    .boxes {
+        display: flex;
+        justify-content: space-between;
+        .box {
+            background: $box-background-color;
+            padding: 10px;
+            width: 33%;
+    
+            h2 {
+                font-size: $font-size-large;
+            }
+            
+            span {
+                font-size: $font-size-large;
+            }
+        }
+    }
+
+    .breached-accounts {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

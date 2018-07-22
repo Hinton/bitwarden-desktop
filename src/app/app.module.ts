@@ -40,6 +40,7 @@ import { TrueFalseValueDirective } from 'jslib/angular/directives/true-false-val
 import { I18nPipe } from 'jslib/angular/pipes/i18n.pipe';
 import { SearchCiphersPipe } from 'jslib/angular/pipes/search-ciphers.pipe';
 
+import { AuditComponent } from './security/audit.component';
 import { AddEditComponent } from './vault/add-edit.component';
 import { AttachmentsComponent } from './vault/attachments.component';
 import { CiphersComponent } from './vault/ciphers.component';
@@ -98,6 +99,7 @@ import { ViewComponent } from './vault/view.component';
         VaultComponent,
         ViewComponent,
         VaultContent,
+        AuditComponent,
     ],
     entryComponents: [
         AttachmentsComponent,

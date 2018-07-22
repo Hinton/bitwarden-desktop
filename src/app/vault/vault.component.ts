@@ -4,4 +4,5 @@ import { Component } from '@angular/core';
     selector: 'app-vault',
     templateUrl: 'vault.component.html',
 })
-export class VaultComponent {}
+export class VaultComponent  {
+}
