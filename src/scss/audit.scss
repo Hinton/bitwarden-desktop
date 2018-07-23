@@ -26,5 +26,13 @@ app-audit {
     .breached-accounts {
         width: 100%;
         margin-top: 10px;
+
+        .account {
+            padding: 10px;
+            background: $box-background-color;
+            flex: 1;
+
+            margin-bottom: 10px;
+        }
     }
 }

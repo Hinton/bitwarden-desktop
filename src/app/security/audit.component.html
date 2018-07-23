@@ -21,6 +21,24 @@
     </div>
 
     <div class="breached-accounts">
-        Breached account list?
+        <h2>Breached Accounts</h2>
+
+        <div class="list">
+            <div *ngFor="let account of breachedAccounts" class="account">
+                <h3>{{account.username}}</h3>
+    
+                <div class="breaches">
+                    <div *ngFor="let breach of account.breaches">
+                        <div class="title">
+                            <app-vault-icon [cipher]="breach.domain"></app-vault-icon>
+                            <span class="text">{{breach.name}}</span>
+                            <span class="detail">{{breach.domain}}</span>
+                        </div>
+    
+                        <!--<p>{{breach.description}}</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
